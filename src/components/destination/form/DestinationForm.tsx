@@ -132,20 +132,4 @@ export function DestinationForm() {
     </Card>
   );
 
-
-  /*return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Add a destination</CardTitle>
-      </CardHeader>
-
-      <CardContent>
-        <div className={styles.placeholder}>
-          <p className={styles.placeholderText}>
-            Complete the tutorial steps to build the destination form.
-          </p>
-        </div>
-      </CardContent>
-    </Card>
-  );*/ 
 }
