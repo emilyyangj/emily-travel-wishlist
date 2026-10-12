@@ -46,7 +46,9 @@ export function DestinationList({
       <ul className={styles.list}>
         {destinations.map((destination) => (
           <li key={destination.id} className={styles.listItem}>
-            {/* TODO: Add destination details here, such as the city and country. */}
+            <p className="font-semibold">{destination.city}</p>
+            <p className="text-sm text-muted-foreground">{destination.country}</p>
+            
           </li>
         ))}
       </ul>

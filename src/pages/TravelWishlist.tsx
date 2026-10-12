@@ -1,15 +1,13 @@
-// import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import { DestinationForm } from "@/components/destination/form/DestinationForm";
-// import { DestinationList } from "@/components/destination/list/DestinationList";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DestinationList } from "@/components/destination/list/DestinationList";
 import gdcLogo from "@/assets/gdc-logo.png";
-// import { getDestinations } from "@/services/destinationService";
-// import { destinationQueryKey } from "@/lib/queryKeys";
+import { getDestinations } from "@/services/destinationService";
+import { destinationQueryKey } from "@/lib/queryKeys";
 import styles from "./TravelWishlist.module.css";
 
 export function TravelWishlist() {
-  /*
   const {
     data: destinations = [],
     error,
@@ -20,7 +18,6 @@ export function TravelWishlist() {
     queryKey: destinationQueryKey,
     queryFn: getDestinations,
   });
-  */
 
   return (
     <main className={styles.page}>
@@ -44,20 +41,13 @@ export function TravelWishlist() {
 
         <DestinationForm />
 
-        {/* TODO: Replace this entire placeholder Card with DestinationList. */}
-        <Card>
-          <CardHeader>
-            <CardTitle>My Destinations</CardTitle>
-          </CardHeader>
-
-          <CardContent>
-            <div className={styles.placeholder}>
-              <p className={styles.placeholderText}>
-                Complete the tutorial steps to display destinations here.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+                <DestinationList
+          destinations={destinations}
+          error={error}
+          isLoading={isPending}
+          isRefreshing={isFetching}
+          onRetry={() => void refetch()}
+        />
       </div>
     </main>
   );

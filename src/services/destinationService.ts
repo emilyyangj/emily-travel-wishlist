@@ -1,4 +1,4 @@
-/*
+
 import type { Destination, NewDestination } from "@/types/destination";
 
 const XANO_BASE_URL = import.meta.env.VITE_XANO_BASE_URL;
@@ -31,6 +31,32 @@ async function getErrorMessage(response: Response) {
     return fallbackMessage;
   }
 }
-*/
 
-// TODO: Implement the API functions for fetching and adding destinations.
+
+export async function getDestinations(): Promise<Destination[]> {
+  const response = await fetch(getDestinationUrl());
+
+  if (!response.ok) {
+    throw new Error(await getErrorMessage(response));
+  }
+
+  return (await response.json()) as Destination[];
+}
+
+export async function addDestination(
+  destination: NewDestination,
+): Promise<Destination> {
+  const response = await fetch(getDestinationUrl(), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(destination),
+  });
+
+  if (!response.ok) {
+    throw new Error(await getErrorMessage(response));
+  }
+
+  return (await response.json()) as Destination;
+}
